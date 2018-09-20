@@ -1,9 +1,3 @@
-.. toctree::
-   :hidden:
-
-   local-single-node-testnet
-   local-multi-node-testnet
-
 개발 환경
 --------------------------
 
@@ -20,3 +14,9 @@ This is the go-to option for Smart Contract developers, aspiring Block Producers
 While this option can technically be used for smart contract development, it may be overkill. This is most beneficial for those who are working on aspects of Core Development, such as benchmarking, optimization and experimentation. It's also a good option for the curious and tinkerers amongst you.
 
 :doc:`로컬 다중 노드 테스트넷 설정하기<local-multi-node-testnet>`
+
+.. toctree::
+   :hidden:
+
+   local-single-node-testnet
+   local-multi-node-testnet
