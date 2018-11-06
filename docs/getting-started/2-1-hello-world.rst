@@ -81,15 +81,15 @@
 
    문서에 업데이트 되지 않았으나 ``eosio.cdt`` 1.3.0 버전부터 ``name`` 타입이 typedef에서 클래스로 변경되었다, typedef는 ``capi_name`` 이란 이름으로 제공된다.
    또한 이전 코드에서는 매개변수 ``user`` 를 64비트 정수(uint64_t)로 입력받았기 때문에 ``name{user}`` 로 감싸 출력해야 했지만
-   변경된 라이브러리에서는 이미 ``name`` 타입으로 입력 받고 있으므로 ``print("Hello, ", user);`` 만으로도 출력 가능하다.
+   변경된 라이브러리에서는 이미 ``name`` 타입으로 입력 받고 있으므로 ``print("Hello, ", user);`` 만으로 출력이 가능하다.
 
-마지막으로, ``hello`` 컨트랙트가 액션 호출에 대응할 수 있도록 ``EOSIO_DISPATCH`` 매크로를 추가한다.
+마지막으로 ``hello`` 컨트랙트가 액션 호출에 대응할 수 있도록 ``EOSIO_DISPATCH`` 매크로를 추가한다.
 
 .. code-block:: c++
 
    EOSIO_DISPATCH( hello, (hi) )
 
-작성한 코드를 모두 결합하면, hello world 컨트랙트가 완성된다.
+작성한 코드를 모두 결합하면 hello world 컨트랙트가 완성된다.
 
 .. code-block:: c++
 
@@ -110,7 +110,7 @@
 
 .. note:: eosio.cdt의 ABI 생성기는 여러 스타일의 속성을 지원한다. `ABI 사용 가이드 <https://github.com/EOSIO/eosio.cdt#difference-from-old-abi-generator>`_ 를 참고하라.
 
-다음 명령으로 작성한 코드를 웹 어셈블리(.wasm)로 컴파일 할 수 있다.
+다음 명령을 입력하여 작성한 코드를 웹 어셈블리(.wasm)로 컴파일 할 수 있다.
 
 .. code-block:: console
 
@@ -130,7 +130,7 @@
 
 컴파일 한 ``wasm`` 을 `cleos set contract <https://developers.eos.io/eosio-cleos/reference#cleos-set-contract>`_ 명령으로 배포한다.
 
-.. note:: 에러 발생시?
+.. note:: 에러가 발생한다면?
 
    지갑의 잠금이 해제(unlock)되어 있어야 한다. 또는 1.3 단계에서 설명한 cleos의 alias 설정을 지나치지 않았는지 확인하라.
 
@@ -152,7 +152,7 @@
    #    hello.code <= hello.code::hi               {"user":"bob"}
    >> Hello, bob
 
-지금까지의 코드는 어느 계정이든지 다른 사용자(user)에게 "Hello" 인사를 건넬 수 있게 작성되어 있다.
+지금까지의 코드는 어느 계정이든지 임의의 사용자(user)에게 "Hello" 인사를 건넬 수 있게 작성되어 있다.
 
 .. code-block:: console
 
@@ -193,13 +193,13 @@
 
    cleos set contract hello CONTRACTS_DIR/hello -p hello@active
 
-user와 승인한 계정을 다르게 하여 액션을 다시 실행해보자.
+user와 승인한 계정을 다르게 하여 다시 액션을 실행해보자.
 
 .. code-block:: console
 
    cleos push action hello hi '["bob"]' -p alice@active
 
-기대한 것과 같이 ``require_auth`` 는 트랜잭션의 실행을 중단하고 아래 에러를 발생시킨다.
+새로 추가한 ``require_auth`` 는 트랜잭션의 실행을 중단하고 아래 에러를 발생시킨다.
 
 .. code-block:: console
 
