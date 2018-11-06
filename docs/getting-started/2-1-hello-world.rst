@@ -79,9 +79,10 @@
 
 .. tip::
 
-   문서에 업데이트 되지 않았으나 ``eosio.cdt`` 1.3.0 버전부터 ``name`` 타입이 typedef에서 클래스로 변경되었다, typedef는 ``capi_name`` 이란 이름으로 제공된다.
-   또한 이전 코드에서는 매개변수 ``user`` 를 64비트 정수(uint64_t)로 입력받았기 때문에 ``name{user}`` 로 감싸 출력해야 했지만
-   변경된 라이브러리에서는 이미 ``name`` 타입으로 입력 받고 있으므로 ``print("Hello, ", user);`` 만으로 출력이 가능하다.
+   문서에 업데이트 되지 않았으나 ``eosio.cdt`` 1.3.0 버전부터 기본 제공되던 많은 typedef가 삭제되었다.
+   64비트 정수(uint64_t)에 대한 typedef였던 ``account_name``, ``action_name`` 등이 제거되고 ``capi_name`` 이 이를 대신한다.
+   이전 코드에서는 매개변수 ``user`` 를 ``account_name`` 으로 입력 받기 때문에 ``name{user}`` 로 감싸 출력해야 했지만 (name으로 감싸지 않는 경우 문자열을 BASE32로
+   인코딩한 64비트 정수가 그대로 출력된다) 변경된 예제에서는 이미 ``name`` 타입으로 입력 받고 있으므로 ``print("Hello, ", user);`` 만으로 출력이 가능하다.
 
 마지막으로 ``hello`` 컨트랙트가 액션 호출에 대응할 수 있도록 ``EOSIO_DISPATCH`` 매크로를 추가한다.
 
