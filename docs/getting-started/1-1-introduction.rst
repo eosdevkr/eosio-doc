@@ -16,7 +16,7 @@
 
 C/C++ 경험
 ----------
-EOSIO 블록체인은 사용자가 개발한 응용과 코드들을 웹 어셈블리(WASM, WebAssembly)로 실행한다. WASM은 Google, Microsoft, Apple을 포함하여 업계의 선두 기업들에 의해 폭넓은 지원을 받고 있는 새롭게 등장한 표준이다.
+EOSIO 기반 블록체인은 사용자가 개발한 웹 어셈블리(WASM, WebAssembly) 애플리케이션과 코드를 실행한다. WASM은 Google, Microsoft, Apple을 포함하여 업계의 선두 기업들에 의해 폭넓은 지원을 받고 있는 새롭게 등장한 표준이다.
 
 현 시점에서 WASM으로 컴파일하는 가장 성숙한 툴체인(toolchain)은 clang/llvm의 C/C++ 컴파일러이다. 가장 높은 호환성을 보장받기 위해 EOSIO가 제공하는 C++ 툴체인을 사용할 것을 권장한다.
 
