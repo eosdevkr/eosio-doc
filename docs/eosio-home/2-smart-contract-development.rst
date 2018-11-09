@@ -3,4 +3,4 @@
 
 .. toctree::
 
-   2-1-hello-world
+   your-first-contract
