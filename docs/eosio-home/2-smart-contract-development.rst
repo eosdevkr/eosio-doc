@@ -4,3 +4,4 @@
 .. toctree::
 
    your-first-contract
+   token-contract
