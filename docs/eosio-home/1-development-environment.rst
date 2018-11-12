@@ -4,3 +4,4 @@
 .. toctree::
 
    introduction
+   setting-up-your-environment
