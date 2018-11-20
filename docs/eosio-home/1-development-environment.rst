@@ -5,3 +5,4 @@
 
    introduction
    setting-up-your-environment
+   getting-the-software
