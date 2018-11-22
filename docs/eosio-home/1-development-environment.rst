@@ -6,3 +6,4 @@
    introduction
    setting-up-your-environment
    getting-the-software
+   installing-the-contract-development-toolkit
