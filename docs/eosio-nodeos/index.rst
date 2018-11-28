@@ -1,8 +1,10 @@
 Nodeos
 ==========================
 
+NODEOS 설정
+--------------------------
+
 .. toctree::
    :includehidden:
-   :caption: NODEOS 설정
 
-   development-environment/index
+   setup-nodeos-for-development

@@ -1,7 +1,21 @@
 시작 가이드
 ==========================
 
+1. 개발 환경
+--------------------------------
+
 .. toctree::
 
-   1-development-environment
-   2-smart-contract-development
+   introduction
+   setting-up-your-environment
+   getting-the-software
+   installing-the-contract-development-toolkit
+
+
+2. 스마트 컨트랙트 개발하기
+--------------------------------
+
+.. toctree::
+
+   your-first-contract
+   token-contract
