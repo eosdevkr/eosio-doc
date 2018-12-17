@@ -4,9 +4,10 @@
 EOSIO는 최대 16개의 인덱스를 활용하여 테이블을 정렬할 수 있다. 이번 섹션에서는 ``addressbook`` 컨트랙트에 다른 인덱스를 추가해서, 테이블의 레코드를 다른 방식으로 반복해 볼 것이다.
 
 .. rubric:: 1단계: 테이블에 존재하는 데이터 삭제하기
-As mentioned earlier, a table's struct cannot be modified when it has data in it. The first step allows the removal of the data already added.
 
-Remove all records of alice and bob that were added in previous tutorials.
+이전에 언급했듯이, 데이터가 있으면 테이블의 구조를 변경시킬 수 없다. 첫 번째 단계는 이미 추가된 데이터를 삭제하는 것이다.
+
+이전 튜토리얼에서 추가된 alice와 bob의 모든 레코드를 삭제한다.
 
 .. code-block:: console
 
@@ -18,7 +19,7 @@ Remove all records of alice and bob that were added in previous tutorials.
 
 .. rubric:: 2단계: 새로운 인덱스 멤버와 getter 추가하기
 
-Add a new member variable and its getter to the ``addressbook.cpp`` contract. Since the secondary index needs to be numeric field so a ``uint64_t`` age variable is added.
+``adressbook.cpp`` 컨트랙트에 새로운 변수를 추가하고 변수의 getter를 추가한다. 보조 인덱스는 숫자 속성을 가져야 하기 때문에 ``uint64_t`` 자료형인 age 변수를 추가한다.
 
 .. code-block:: c++
 
@@ -27,7 +28,7 @@ Add a new member variable and its getter to the ``addressbook.cpp`` contract. Si
 
 .. rubric:: 3단계: `addresses` 테이블 구성에 보조 인덱스 추가하기
 
-A field has been defined as the secondary index, next the ``address_index`` table needs to be reconfigured.
+추가한 속성이 보조 인덱스로 정의 된 다음에는 ``address_index`` 테이블을 재설정 해주어야 한다.
 
 .. code-block:: c++
 
@@ -35,9 +36,9 @@ A field has been defined as the secondary index, next the ``address_index`` tabl
    indexed_by<"byage"_n, const_mem_fun<person, uint64_t, &person::get_secondary_1>>
       > address_index;
 
-In the third parameter, we pass a ``index_by`` struct which is used to instantiate a index.
+세 번째 변수를 보면, 인덱스를 인스턴스화하기 위해 ``index_by`` 구조체를 넘겨 주었다.
 
-In that ``index_by`` struct, we specify the name of index as ``"byage"`` and the second type parameter as a function call operator should extract a const value as an index key. In this case, we point it to the getter we created earlier so this multiple index table will index records by ``age`` variable.
+``index_by`` 구조체에서, 인덱스의 이름을 ``"byage"``라고 지정하였고, 함수 호출 연산자로서의 두 번째 타입 파라미터는 인덱스 키로 const 값을 반환해야한다. 이 경우, 이전에 우리가 만든 getter를 가리키고 있으므로, 이 다중 인덱스 테이블은 ``age`` 변수로 레코드를 인덱싱한다.
 
 .. code-block:: c++
 
@@ -69,7 +70,7 @@ In that ``index_by`` struct, we specify the name of index as ``"byage"`` and the
 
    cleos push action addressbook upsert '["bob", "bob", "is a guy", 49, "doesnt exist", "somewhere", "someplace"]' -p bob@active
 
-Look up alice's address by the age index. Here the ``--index 2`` parameter is used to indicate that the query applies to the secondary index (index #2)
+alice의 연락처를 나이 인덱스로 확인해보자. 여기서 ``--index 2`` 파라미터는 질의가 보조 인덱스에 적용됨을 나타내기 위해 사용된다. (2번 인덱스)
 
 .. code-block:: console
 
@@ -77,7 +78,7 @@ Look up alice's address by the age index. Here the ``--index 2`` parameter is us
    --key-type i64 \
    --index 2
 
-You should see something like the following
+다음과 같은 결과가 나올 것이다.
 
 .. code-block:: JSON
 
@@ -95,13 +96,13 @@ You should see something like the following
       "more": false
    }
 
-Look it up by Bob's age
+Bob의 나이를 확인해 보자.
 
 .. code-block:: console
 
    cleos get table addressbook addressbook people --upper 50 --key-type i64 --index 2
 
-It should return
+이것은 다음과 같은 값을 반환한다.
 
 .. code-block:: JSON
 
@@ -127,11 +128,11 @@ It should return
    "more": false
    }
 
-All good!
+문제 없다!
 
 .. rubric:: 마무리
 
-The complete ``addressbook`` contract up to this point:
+지금까지 완전한 ``addressbook`` 컨트랙트의 코드는 다음과 같다:
 
 .. code-block:: c++
 
