@@ -19,3 +19,4 @@
 
    your-first-contract
    token-contract
+   secondary-indices
