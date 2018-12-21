@@ -83,7 +83,7 @@ alice의 연락처를 나이 인덱스로 찾아보자. 여기서 ``--index 2`` 
 .. code-block:: JSON
 
    {
-      "rows": [{
+     "rows": [{
          "key": "alice",
          "first_name": "alice",
          "last_name": "liddell",
@@ -91,9 +91,9 @@ alice의 연락처를 나이 인덱스로 찾아보자. 여기서 ``--index 2`` 
          "street": "123 drink me way",
          "city": "wonderland",
          "state": "amsterdam"
-        }
-      ],
-      "more": false
+       }
+     ],
+     "more": false
    }
 
 Bob의 나이를 찾아보자.
@@ -107,7 +107,7 @@ Bob의 나이를 찾아보자.
 .. code-block:: JSON
 
    {
-   "rows": [{
+     "rows": [{
          "key": "alice",
          "first_name": "alice",
          "last_name": "liddell",
@@ -115,7 +115,7 @@ Bob의 나이를 찾아보자.
          "street": "123 drink me way",
          "city": "wonderland",
          "state": "amsterdam"
-      },{
+       },{
          "key": "bob",
          "first_name": "bob",
          "last_name": "is a loser",
@@ -123,9 +123,9 @@ Bob의 나이를 찾아보자.
          "street": "doesnt exist",
          "city": "somewhere",
          "state": "someplace"
-      }
-   ],
-   "more": false
+       }
+     ],
+     "more": false
    }
 
 문제 없다!
@@ -209,4 +209,4 @@ Bob의 나이를 찾아보자.
 
    };
 
-   EOSIO_DISPATCH( addressbook, (upsert)(erase))
+   EOSIO_DISPATCH( addressbook, (upsert)(erase) )
