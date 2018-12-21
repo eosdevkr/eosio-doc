@@ -1,5 +1,9 @@
 import sys
 import os
+from sphinx.highlighting import lexers
+from pygments.lexers.c_cpp import CppLexer
+
+lexers['c++'] = CppLexer(startinline=True, linenos=1)
 
 extensions = []
 templates_path = ['_templates']
