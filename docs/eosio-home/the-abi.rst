@@ -14,7 +14,7 @@ ABI 파일은 ``eosio.cdt`` 에서 제공하는 ``eosio-cpp`` 유틸리티를 �
 .. rubric:: ABI는 무엇인가?
 
 Application Binary Interface(ABI)는 사용자 액션의 JSON과 Binary 표현 간에 어떻게 변환해야 하는지 JSON 형식으로 기술한 것이다.
-ABI는 또한 database state를 JSON으로/에서 어떻게 변환할 것인지 기록한 것이다.
+또한 ABI는 데이터베이스 상태(database state)를 JSON으로/에서 어떻게 변환할 것인지도 기술한다.
 일단 당신이 ABI를 통하여 당신의 컨트랙트를 기록하고 나면, 개발자와 사용자들은 당신의 컨트랙트에서 JSON을 통해 막힘없이 소통할 수 있을 것이다.
 
 .. warning:: Security Note
