@@ -19,4 +19,5 @@
 
    your-first-contract
    token-contract
+   the-abi
    secondary-indices
