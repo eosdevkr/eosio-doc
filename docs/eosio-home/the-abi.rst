@@ -108,7 +108,7 @@ eosio.token.hpp을 보면, 퍼블릭 액션에서 어떤 구조체를 사용하�
 
 묵시적 구조체는 컨트랙트에서 명시적으로 정의하고 있지 않은 것이다.
 `create action <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L24>`_ 을 보면, 두가지 매개변수가 있는데 ``name`` 타입의 ``issuer`` 와 ``asset`` 타입의 ``maximum_supply`` 다.
-튜토리얼에서 모든 구조체를 분석하지는 않겠지만, 앞선 내용에 따라 일부를 분석해면 다음과 같이 정의할 수 있다.
+튜토리얼에서 모든 구조체를 분석하지는 않겠지만, 같은 논리를 적용하면 다음과 같은 결과를 얻을 수 있다.
 
 `create <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L25>`_
 
