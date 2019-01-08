@@ -273,7 +273,7 @@ eosio.token.hpp을 보면, 퍼블릭 액션에서 어떤 구조체를 사용하�
   }
 
 ``eosio.token`` 컨트랙트의 `헤더 파일<https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L24-L36>`_ 에서 기술한 모든 퍼블릭 함수들을 종합하여 ``eosio.token`` 컨트랙트의 액션을 기술한다.
-그 다음 앞에서 기술한 구조체에 따라 액션 타입을 기술해보자.
+각 액션의 *타입* 은 앞에서 기술한 구조체가 된다.
 많은 경우 함수명과 구조체 이름을 같게 하지만 이 두 가지가 꼭 같아야하는 것은 아니다.
 
 다음 엑션 리스트는 각 액션이 어떻게 기술되어 있는지를 나타내는 JSON 예시와 소스코드가 연결되어 있는 목록이다.
