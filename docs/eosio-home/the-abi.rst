@@ -19,7 +19,7 @@ Application Binary Interface(ABI)는 사용자 액션의 JSON과 Binary 표현 �
 
 .. warning:: Security Note
 
-트랜잭션은 ABI 우회해서도 실행할 수 있다.
+트랜잭션은 ABI를 우회해서도 실행할 수 있다.
 컨트랙트에 전달한 메시지와 액션이 반드시 ABI와 일치할 필요는 없다.
 ABI는 일종의 가이드지, 문지기가 아니다.
 
