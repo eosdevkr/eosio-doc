@@ -274,9 +274,9 @@ eosio.token.hpp을 보면, 퍼블릭 액션에서 어떤 구조체를 사용하�
 
 ``eosio.token`` 컨트랙트의 `헤더 파일<https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L24-L36>`_ 에서 기술한 모든 퍼블릭 함수들을 종합하여 ``eosio.token`` 컨트랙트의 액션을 기술한다.
 각 액션의 *타입* 은 앞에서 기술한 구조체가 된다.
-많은 경우 함수명과 구조체 이름을 같게 하지만 이 두 가지가 꼭 같아야하는 것은 아니다.
+대부분의 경우 함수명과 구조체 이름은 같겠지만, 반드시 같아야만 하는 것은 아니다.
 
-다음 엑션 리스트는 각 액션이 어떻게 기술되어 있는지를 나타내는 JSON 예시와 소스코드가 연결되어 있는 목록이다.
+아래는 각 액션이 어떻게 기술되어 있는지 나타낸 JSON 예시와 소스 코드가 연결된 액션의 목록이다.
 
 `create <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L24-L25>`_
 
@@ -342,11 +342,23 @@ eosio.token.hpp을 보면, 퍼블릭 액션에서 어떤 구조체를 사용하�
     "key_types" : []  //An array of key types that correspond to key names array member, length of array must equal length of key names array.
   }
 
-eosio.token 컨트랙트에는 두 개의 테이블을 인스턴스화 하고 있다.
-하나는 `accounts <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L75>`_ 이고 다른 하나는 `stat <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L76>`_ 이다.
+eosio.token 컨트랙트는 두 개의 테이블, `accounts <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L75>`_ 와 `stat <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L76>`_ 을 인스턴스화 한다.
 
-accounts 테이블은 i64 인덱스를 갖고 있으며, `account 구조체 <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L67-L73>`_ 를 기초로 하고 있다. 
-`uint64 타입을 기본키 <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L72>`_ 로 갖고 있으며, 이 키는 "currency"라는 이름으로 명명하였다.  
+`account 구조체 <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L61-L65>`_ 에 기반한 accounts 테이블은 i64 인덱스로 `uint64 를 기본키 <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L64>`_ 로 사용한다.
+
+다음은 accounts 테이블이 ABI에서 어떻게 기술되어있는지 보여준다.
+
+.. code-block:: JSON
+
+  {
+    "name": "accounts",
+    "type": "account", // Corresponds to previously defined struct
+    "index_type": "i64",
+    "key_names" : ["primary_key"],
+    "key_types" : ["uint64"]
+  }
+  
+`currency_stats 구조체 <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L67-L73>`_ 에 기반한 stat 테이블은 i64 인덱스로 `uint64 를 기본키 <https://github.com/EOSIO/eosio.contracts/blob/master/eosio.token/include/eosio.token/eosio.token.hpp#L72>`_ 로 사용한다.
 
 다음은 stat 테이블이 ABI에서 어떻게 기술되어있는지 보여준다.
 
@@ -366,7 +378,7 @@ accounts 테이블은 i64 인덱스를 갖고 있으며, `account 구조체 <htt
 
 .. rubric:: 종합
 
-최종적으로 ABI 파일에는 ``eosio.token`` 컨트랙트 내용이 이렇게 기술되어있다.
+최종적으로 ``eosio.token`` 컨트랙트를 정확하게 기술한 ABI 파일은 다음과 같다.
 
 .. code-block:: JSON
   
@@ -522,14 +534,14 @@ accounts 테이블은 i64 인덱스를 갖고 있으며, `account 구조체 <htt
         "name": "accounts",
         "type": "account",
         "index_type": "i64",
-        "key_names" : ["currency"],
+        "key_names" : ["primary_key"],
         "key_types" : ["uint64"]
       },
       {
         "name": "stat",
         "type": "currency_stats",
         "index_type": "i64",
-        "key_names" : ["currency"],
+        "key_names" : ["primary_key"],
         "key_types" : ["uint64"]
       }
     ],
@@ -539,15 +551,15 @@ accounts 테이블은 i64 인덱스를 갖고 있으며, `account 구조체 <htt
 
 .. rubric:: 토큰 컨트랙트에서 다루지 않은 케이스
 
-.. rubric:: 벡터
+.. rubric:: Vector
 
-ABI에서 벡터를 기술할 때, 타입을 ``[]`` 으로 간단히 추가하면 된다.
-permission 레벨 벡터를 기술하려고 한다면, ``permission_level[]`` 과 같이 기술하면 된다.
+ABI에서 vector를 기술하려면 간단히 타입에 ``[]`` 을 추가한다.
+permission level의 vector는 ``permission_level[]`` 로 기술한다.
 
 .. rubric:: Struct Base
 
 Struct Base는 많이 사용되지는 않지만 상당히 중요한 속성이다.
-구조체 ABI는 동일 ABI 파일 내에 기술된 base ABI 구조체를 상속하여 사용할 수 있다.
+구조체 ABI는 동일 ABI 파일 내에 기술된 **base** ABI 구조체를 상속하여 사용할 수 있다.
 스마트 컨트랙트 로직이 상속을 지원하지 않을 경우, 에러를 throw할뿐 특별한 이슈를 발생시키지 않는다.
 
 시스템 컨트랙트의 `소스 코드 <https://github.com/EOSIO/eosio.contracts/blob/4e4a3ca86d5d3482dfac85182e69f33c49e62fa9/eosio.system/include/eosio.system/eosio.system.hpp#L46>`_ 와 `ABI <https://github.com/EOSIO/eosio.contracts/blob/4e4a3ca86d5d3482dfac85182e69f33c49e62fa9/eosio.system/abi/eosio.system.abi#L262>`_ 예시를 확인할 수 있다.
@@ -556,16 +568,16 @@ Struct Base는 많이 사용되지는 않지만 상당히 중요한 속성이다
 
 이야기를 줄이기 위해 ABI 속성 중 앞서 다뤄지지 않았던 다른 ABI 속성들에 대해 전체적으로 간략히 이야기 해보겠다.
 
-.. rubric:: 리카르디안 절
+.. rubric:: 리카디안 절
 
-리카르디안 절은 특정 액션에 대한 의도된 결과를 기술한다.
+리카디안 절은 특정 액션에 대한 의도된 결과를 기술한다.
 송신자와 컨트랙트간 조건을 설정하는데 이를 사용할 수 있다.
 
 .. rubric:: ABI 확장
 
-포괄적인 "future proofing" 계층은 old clients가 "chunks" 확장 데이터 파싱을 생략할 수 있도록 허용한다.
+일반적인 "future proofing" 계층은 이전 버전의 클라이언트가 확장 데이터의 "청크(chunk)"를 파싱하지 않는 것을 허용한다.
 이 속성은 현재 사용하지 않고 있다.
-앞으로 확장마다 각각의 "chunk"를 갖게 되어 old clients는 이를 생략할 수 있고, newer clients는 어떻게 해석해야하는지 알 수 있을 것이다.
+앞으로 확장마다 vector 안에 각각의 "청크"를 갖게 되어 구 버전의 클라이언트는 이를 생략하고 해석하는 법을 아는 새 버전의 클라이언트를 이를 이해할 수 있을 것이다.
 
 .. rubric:: 유지보수
 
