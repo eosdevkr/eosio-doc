@@ -356,7 +356,7 @@ accounts 테이블은 i64 인덱스를 갖고 있으며, `account 구조체 <htt
     "name": "stat",
     "type": "currency_stats",
     "index_type": "i64",
-    "key_names" : ["currency"],
+    "key_names" : ["primary_key"],
     "key_types" : ["uint64"]
   }
 
