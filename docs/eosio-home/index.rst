@@ -20,4 +20,5 @@
    your-first-contract
    token-contract
    the-abi
+   data-persistence
    secondary-indices
