@@ -5,6 +5,7 @@
 --------------------------------
 
 .. toctree::
+   :maxdepth: 1
 
    introduction
    setting-up-your-environment
@@ -16,6 +17,7 @@
 --------------------------------
 
 .. toctree::
+   :maxdepth: 1
 
    your-first-contract
    token-contract

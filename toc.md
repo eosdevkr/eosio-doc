@@ -20,7 +20,7 @@
 |-|-----|---------|
 |:heavy_check_mark:|2.1 Hello World!|your-first-contract|your-first-contract|
 |:heavy_check_mark:|2.2 Deploy, Issue and Transfer Tokens|token-contract|
-|:x:|2.3 Understanding ABI Files|the-abi|
+|:heavy_check_mark:|2.3 Understanding ABI Files|the-abi|
 |:heavy_check_mark:|2.4 Data Persistence|data-persistence|
 |:heavy_check_mark:|2.5 Secondary Indices|secondary-indices|
 |:x:|2.6 Adding Inline Actions|inline-actions|
