@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR');
 
+img {
+    max-width: 100%;
+    height: auto;
+}
+
 .text-logo {
     font-family: "Noto Sans KR";
 }
